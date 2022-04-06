@@ -14,5 +14,7 @@ public interface RepositorioUsuarios extends CrudRepository<Usuario, Long>{
 	List<Usuario> findById(long id); //SELECT * FROM users WHERE id = <ID>
 
 	//INSERT into users(first_name, last_name, password, email) VALUES (Datos de objeto Usuario)
-	//Usuario save(Usuario nuevoUsuario);
+	Usuario save(Usuario nuevoUsuario);
+	
+	void deleteById(Long id);
 }

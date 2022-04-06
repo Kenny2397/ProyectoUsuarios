@@ -25,15 +25,15 @@ public class Usuario {
 	private Long id;
 
 	@NotNull
-	@Size(min=2, max=100)
+	@Size(min=2, max=100, message = "El nombre debe de ser de al menos 2 caracteres")
 	private String first_name;
 
 	@NotNull
-	@Size(min=2, max=100)
+	@Size(min=2, max=100, message = "El apellido debe de ser de al menos 2 caracteres")
 	private String last_name;
 
 	@NotNull
-	@Size(min=5, max=255)
+	@Size(min=5, max=255, message = "El email debe de ser de al menos 5 caracteres")
 	private String email;
 
 	@NotNull

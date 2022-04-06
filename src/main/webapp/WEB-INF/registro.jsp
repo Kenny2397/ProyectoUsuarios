@@ -12,36 +12,37 @@
 
 </head>
 <body>
-	<h1>Nuevo Usuario</h1>
+<!-- 3.- registro.jsp include modelAttribute="{{model}}" -->
+	<h1>Regístrate</h1>
 	<form:form action="/create" method="post" modelAttribute="usuario">
 		<div class="form-group">
 			<form:label path="first_name">Nombre</form:label>
 			<form:input path="first_name" cssClass="form-control"/>
 			<form:errors path="first_name"/>
-			
+			<!-- form}:errors muestra la validacion y el mnesaje definido en modelos -->
+		</div>
+		<div class="form-group">
+			<form:label path="last_name">Apellido</form:label>
+			<form:input path="last_name" cssClass="form-control"/>
+			<form:errors path="first_name"/>
 		</div>
 		<div class="form-group">
 			<form:label path="email">Email</form:label>
 			<form:input path="email" type="email" cssClass="form-control"/>
 			<form:errors path="email"/>
-			
 		</div>
 		<div class="form-group">
 			<form:label path="password">Password</form:label>
 			<form:password path="password" class="form-control"/>
 			<form:errors path="password"/>
-			
 		</div>
-		<div class="form-group">
-			<form:label path="submit">Email</form:label>
-			<form:input path="email" type="submit" cssClass="form-control"/>
-			<form:errors path="email"/>
-			
-		</div>
-		<input type="submit" name="Registrar">
+		<br>
+		<input type="submit" class="btn btn-success" name="Registrar" value="Registrar">
 	</form:form>
+<!-- this error is for a flash messsges 	
 	<div>
 		<c:out value="${error_registro}"></c:out>	
 	</div>
+-->
 </body>
 </html>

@@ -32,4 +32,19 @@ public class ServicioUsuarios {
 			return null;
 		}
 	}
+//	Create a New User
+	public Usuario save_user(Usuario usuario) {
+		Usuario nuevoUsuario = repositorio.save(usuario);
+		return nuevoUsuario;
+//		option 2
+//		return repositorio.save(nuevoUsuario);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

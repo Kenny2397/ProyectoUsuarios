@@ -2,8 +2,15 @@ package com.codingdojo.kenny.controladores;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,7 +26,7 @@ public class ControladorUsuariosPlantilla {
 	public ControladorUsuariosPlantilla(ServicioUsuarios servicio) {
 		this.servicio = servicio;
 	}
-	//RequestMappings
+	//Route:/dashboard
 	@RequestMapping(value="/dashboard", method=RequestMethod.GET)
 	public String dashboard(Model model) {
 
@@ -28,6 +35,36 @@ public class ControladorUsuariosPlantilla {
 		model.addAttribute("usuarios", usuarios);
 
 		return "dashboard.jsp";
+	}
+	
+	//2.-Route 
+	//Route:/new
+	@RequestMapping(value="/new", method = RequestMethod.GET)
+	public String root(@ModelAttribute("usuario") Usuario usuario) { //@ModelAttribute??????
+		return "registro.jsp";
+	}
+	
+//	action:/create
+	@PostMapping("/create")
+//	@RequestMapping(value="/new", method=RequestMethod.POST)
+	public String create(@Valid @ModelAttribute("usuario") Usuario usuario,
+						 BindingResult result) {
+//  BindingResult verifica errores y  return T/F
+		if(result.hasErrors()) {
+			return "registro.jsp";
+		} else {
+
+			System.out.println(usuario.getFirst_name());
+			servicio.save_user(usuario);
+			return "redirect:/dashboard";
+		}
+
+	}
+	
+//	action:/delete
+	@DeleteMapping(value="/delete/{Id}")
+	public String delete(@PathVariable("Id") Long id) {
+		
 	}
 	
 

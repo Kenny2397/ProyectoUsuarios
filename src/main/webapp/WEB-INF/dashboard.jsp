@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-  	<h1>¡Bienvenido al dashboard!</h1>
+  	<h1>¡Bienvenido al dashboard! </h1>
 
 	<table class="table table-hover">
 		<thead>
@@ -28,11 +28,18 @@
 					<td><c:out value="${usuario.getFirst_name()}" /></td>
 					<td><c:out value="${usuario.getLast_name()}" /></td>
 					<td><c:out value="${usuario.getEmail()}" /></td>
-					<td></td>
+					<td>
+						<form action="/delete/${usuario.getId()}" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
+	<!-- 1.-New User -->
+	<a href="/new" class="btn btn-success">Nuevo Usuario</a>
 </body>
 </html>
